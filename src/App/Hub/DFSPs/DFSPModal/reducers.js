@@ -16,9 +16,9 @@ const initialHubDfspModel = {
 }
 
 const initialState = {
-  previousMonetaryZoneId: initialHubDfspModel.monetaryZoneId,
-  previousDfspName: initialHubDfspModel.name,
-  previousHubDfspOverrideId: initialHubDfspModel.id,
+  previousHubDfspMonetaryZoneId: initialHubDfspModel.monetaryZoneId,
+  previousHubDfspName: initialHubDfspModel.name,
+  previousHubDfspId: initialHubDfspModel.id,
   hubDfspMonetaryZoneId:initialHubDfspModel.monetaryZoneId,
   hubDfspName:initialHubDfspModel.name,
   hubDfspOverrideId:initialHubDfspModel.id,
@@ -34,9 +34,9 @@ const HubDfspModal = handleActions(
       const model = action.payload || initialHubDfspModel;
       return {
         ...state,
-        previousMonetaryZoneId: model.monetaryZoneId,
+        previousHubDfspMonetaryZoneId: model.monetaryZoneId,
         previousHubDfspName: model.name,
-        previousHubDfspOverrideId: model.id,
+        previousHubDfspId: model.id,
         hubDfspMonetaryZoneId: model.monetaryZoneId,
         hubDfspName: model.name,
         hubDfspOverrideId: model.id,

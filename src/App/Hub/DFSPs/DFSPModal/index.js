@@ -2,13 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Modal, FormInput } from 'components';
 import {
+  getMonetaryZoneOptions,
   getHubDfspModalName,
   getHubDfspModalId,
   getHubDfspModalMonetaryZoneId,
   getHubDfspModalValidationResult,
   getIsHubDfspModalVisible,
+  getIsExistingDfsp,
   getIsHubDfspModalSubmitEnabled,
-  getIsHubDfspCreatePending,
+  getIsHubDfspModalSubmitPending,
 } from './selectors';
 import { closeHubDfspModal, submitHubDfspModal, setHubDfspModalName, setHubDfspModalId, setHubDfspModalMonetaryZone } from './actions';
 
@@ -18,10 +20,12 @@ const stateProps = state => ({
   dfspName: getHubDfspModalName(state),
   dfspId: getHubDfspModalId(state),
   dfspMonetaryZoneId: getHubDfspModalMonetaryZoneId(state),
+  monetaryZoneOptions: getMonetaryZoneOptions(state),
   validation: getHubDfspModalValidationResult(state),
   isVisible: getIsHubDfspModalVisible(state),
+  isExistingDfsp: getIsExistingDfsp(state),
   isSubmitEnabled: getIsHubDfspModalSubmitEnabled(state),
-  isSubmitPending: getIsHubDfspCreatePending(state),
+  isSubmitPending: getIsHubDfspModalSubmitPending(state),
 });
 
 const actionProps = dispatch => ({
@@ -36,7 +40,9 @@ const DFSPModal = ({
   dfspName,
   dfspId,
   dfspMonetaryZoneId,
+  monetaryZoneOptions,
   validation,
+  isExistingDfsp,
   isVisible,
   isSubmitEnabled,
   isSubmitPending,
@@ -74,6 +80,7 @@ const DFSPModal = ({
           <FormInput
             type="text"
             label="ID"
+            disabled={isExistingDfsp}
             onChange={onIdChange}
             value={dfspId}
             validation={validation.fields.dfspId}
@@ -81,7 +88,8 @@ const DFSPModal = ({
         </div>
         <div className="dfsp-modal__dfsp-monetary-zone">
           <FormInput
-            type="text"
+            type="select"
+            options={monetaryZoneOptions}
             label="Monetary Zone"
             onChange={onMonetaryZoneChange}
             value={dfspMonetaryZoneId}
