@@ -7,6 +7,7 @@ import { createPendingSelector } from 'modusbox-ui-components/dist/redux-fetch';
 
 export const getHubDfspModalName = state => state.hub.dfspModal.hubDfspName;
 export const getHubDfspModalDefaultId = state => state.hub.dfspModal.hubDfspDefaultId;
+export const getHubDfspModalMonetaryZoneId = state => state.hub.dfspModal.hubDfspMonetaryZoneId;
 export const getIsHubDfspModalOverrideIdSet = state => state.hub.dfspModal.isHubDfspOverrideIdSet;
 export const getHubDfspModalOverrideId = state => state.hub.dfspModal.hubDfspOverrideId;
 export const getIsHubDfspModalVisible = state => state.hub.dfspModal.isHubDfspModalVisible;
