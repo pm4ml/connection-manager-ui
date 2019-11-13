@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
-import { createPendingSelector } from 'modusbox-ui-components/dist/redux-fetch';
 import find from 'lodash/find';
+import { createPendingSelector } from 'modusbox-ui-components/dist/redux-fetch';
+import { getDfspMonetaryZoneId } from 'App/selectors';
 import { getOtherDfsps } from 'App/DFSP/selectors';
 
 export const getDfspsJWSError = state => state.dfsp.jws.dfsps.dfspsJWSError;
@@ -19,13 +20,15 @@ export const getIsDfspsJWSPending = createPendingSelector('dfspsJWSCerts.read');
 const getDfspCertificatesByDfsp = createSelector(
   getDfspsJWSCertificates,
   getOtherDfsps,
-  (certificates, otherDfsps) => {
+  getDfspMonetaryZoneId,
+  (certificates, otherDfsps, monetaryZoneId) => {
     return otherDfsps.map(dfsp => {
       const certificate = find(certificates, { dfspId: dfsp.id });
       return {
         ...certificate,
         dfspId: dfsp.id,
         dfspName: dfsp.name,
+        isDownloadEnabled: dfsp.monetaryZoneId === monetaryZoneId || !monetaryZoneId
       };
     });
   }
