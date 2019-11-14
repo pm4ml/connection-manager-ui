@@ -5,10 +5,8 @@ import CertificateCard from './CertificateCard';
 import CertificateInfo from './CertificateInfo';
 import CertificateModal from './CertificateModal';
 import CertificateValidation from './CertificateValidation';
-import ControlIcon from './ControlIcon';
 import MessageBox from './MessageBox';
 import FileControls from './FileControls';
-import FormInput from './FormInput';
 import PendingOverlay from './PendingOverlay';
 import Status from './Status';
 
@@ -16,9 +14,11 @@ import {
   Button,
   Checkbox,
   Column,
+  ControlIcon,
   DataList,
   DatePicker,
   FileUploader,
+  FormInput,
   Heading,
   Icon,
   Menu,
