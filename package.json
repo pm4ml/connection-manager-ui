@@ -3,6 +3,7 @@
   "version": "1.6.9",
   "private": true,
   "dependencies": {
+    "@modusbox/modusbox-ui-components": "1.16.20-rc.1",
     "asn1js": "^2.0.22",
     "babel-polyfill": "^6.26.0",
     "connected-react-router": "^6.3.2",
@@ -10,7 +11,6 @@
     "highlight.js": "^9.15.6",
     "history": "^4.9.0",
     "lodash": "^4.17.11",
-    "modusbox-ui-components": "https://modusbox-release-artifacts.s3.amazonaws.com/ui-components/modusbox-ui-components-1.15.37.tgz",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.25",
     "pkijs": "^2.1.76",
