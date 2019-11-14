@@ -1,5 +1,5 @@
 // Modusbox UI components
-import 'modusbox-ui-components/dist/index.css';
+import '@modusbox/modusbox-ui-components/dist/index.css';
 
 import CertificateCard from './CertificateCard';
 import CertificateInfo from './CertificateInfo';
@@ -40,7 +40,7 @@ import {
   TextField,
   Toast,
   Tooltip,
-} from 'modusbox-ui-components/dist/index';
+} from '@modusbox/modusbox-ui-components/dist/index';
 
 export {
   Button,
