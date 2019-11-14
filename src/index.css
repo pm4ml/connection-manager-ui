@@ -127,5 +127,6 @@ p {
 }
 
 .forminput__row {
-  flex-basis: auto;
+  flex-basis: 100%;
+
 }

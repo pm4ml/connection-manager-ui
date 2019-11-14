@@ -160,15 +160,16 @@ const IngressIp = ({
   onRemoveIp,
 }) => (
   <div className="hub-ingress__ip__row">
-    <ControlIcon
-      icon="close-small"
-      className="hub-ingress__ip__remove"
-      size={20}
-      tooltip={index === 0 ? 'The first IP cannot be removed' : 'Remove IP'}
-      kind="error"
-      onClick={() => onRemoveIp(index)}
-      disabled={index === 0}
-    />
+    <div className="hub-ingress__ip__remove">
+      <ControlIcon
+        icon="close-small"
+        size={20}
+        tooltip={index === 0 ? 'The first IP cannot be removed' : 'Remove IP'}
+        kind="danger"
+        onClick={() => onRemoveIp(index)}
+        disabled={index === 0}
+      />
+    </div>
     <div className="hub-ingress__ip__controls">
       <div className="hub-ingress__ip__fields">
         <div className="hub-ingress__ip__address__container">
