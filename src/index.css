@@ -125,3 +125,7 @@ p {
 .forminput__input-message {
   height: 0px;
 }
+
+.forminput__row {
+  flex-basis: auto;
+}
