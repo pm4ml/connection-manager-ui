@@ -6,6 +6,7 @@ import { getOtherDfsps } from 'App/DFSP/selectors';
 
 export const getDfspsJWSError = state => state.dfsp.jws.dfsps.dfspsJWSError;
 export const getDfspsJWSFilter = state => state.dfsp.jws.dfsps.dfspsJWSFilter;
+export const getDfspsJWSSameMonetaryZone = state => state.dfsp.jws.dfsps.dfspsSameMonetaryZone;
 export const getDfspsJWSCertificates = state => state.dfsp.jws.dfsps.dfspsJWSCertificates;
 export const getDfspsJWSJwsCertificateModalContent = state => state.dfsp.jws.dfsps.dfspsJWSJwsCertificateModalContent;
 export const getIsDfspsJWSJwsCertificateModalVisible = state =>
@@ -16,6 +17,10 @@ export const getIsDfspsJWSIntermediateChainModalVisible = state =>
   state.dfsp.jws.dfsps.isDfspsJWSIntermediateChainModalVisible;
 
 export const getIsDfspsJWSPending = createPendingSelector('dfspsJWSCerts.read');
+export const getIsSameMonetaryZoneFilterEnabled = createSelector(
+  getDfspMonetaryZoneId,
+  monetaryZoneId => monetaryZoneId !== undefined
+);
 
 const getDfspCertificatesByDfsp = createSelector(
   getDfspsJWSCertificates,
@@ -28,7 +33,8 @@ const getDfspCertificatesByDfsp = createSelector(
         ...certificate,
         dfspId: dfsp.id,
         dfspName: dfsp.name,
-        isDownloadEnabled: dfsp.monetaryZoneId === monetaryZoneId || !monetaryZoneId
+        dfspMonetaryZone: dfsp.monetaryZoneId,
+        isDownloadEnabled: dfsp.monetaryZoneId === monetaryZoneId || !monetaryZoneId,
       };
     });
   }
@@ -37,8 +43,17 @@ const getDfspCertificatesByDfsp = createSelector(
 export const getFilteredDfspsJWSCertificatesByDfsp = createSelector(
   getDfspCertificatesByDfsp,
   getDfspsJWSFilter,
-  (certificates, filter) => {
+  getDfspsJWSSameMonetaryZone,
+  getDfspMonetaryZoneId,
+  (certificates, filter, filterBySameZone, zoneId) => {
     const lowerCaseFilter = filter.toLowerCase();
-    return certificates.filter(csr => csr.dfspName.toLowerCase().includes(lowerCaseFilter));
+    return certificates
+      .filter(cert => cert.dfspName.toLowerCase().includes(lowerCaseFilter))
+      .filter(cert => {
+        if (filterBySameZone) {
+          return cert.dfspMonetaryZone === zoneId;
+        }
+        return true;
+      });
   }
 );
