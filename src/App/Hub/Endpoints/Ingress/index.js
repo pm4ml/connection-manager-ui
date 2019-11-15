@@ -78,7 +78,7 @@ const Ingress = ({
     return (
       <MessageBox
         icon="warning-sign"
-        kind="error"
+        kind="danger"
         message="There was an error while loading the endpoints"
         center
         size={30}
@@ -200,7 +200,7 @@ const IngressIp = ({
                 className="hub-ingress__ip__port-remove"
                 size={16}
                 tooltip="Remove Port"
-                kind="error"
+                kind="danger"
                 onClick={() => onRemovePort(portIndex, index)}
                 disabled={portIndex === 0}
               />

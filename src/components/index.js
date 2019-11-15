@@ -5,7 +5,6 @@ import CertificateCard from './CertificateCard';
 import CertificateInfo from './CertificateInfo';
 import CertificateModal from './CertificateModal';
 import CertificateValidation from './CertificateValidation';
-import MessageBox from './MessageBox';
 import FileControls from './FileControls';
 import PendingOverlay from './PendingOverlay';
 import Status from './Status';
@@ -25,6 +24,7 @@ import {
   Menu,
   MenuSection,
   MenuItem,
+  MessageBox,
   Modal,
   ModalTabsLayout,
   Navbar,
