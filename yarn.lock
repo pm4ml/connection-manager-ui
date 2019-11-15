@@ -859,10 +859,10 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@modusbox/modusbox-ui-components@1.16.20-rc.1":
-  version "1.16.20-rc.1"
-  resolved "https://registry.yarnpkg.com/@modusbox/modusbox-ui-components/-/modusbox-ui-components-1.16.20-rc.1.tgz#6dedb280ba8825aa0eebe95847c811dca158579e"
-  integrity sha512-QEOpTEwKfKFlR0vnOylkDLBjDsZfRG22qB2KpweiwjAaLvbCBK3nelJw0W3ieNyI8DqcYJTVaSsT1DjDNrBwJg==
+"@modusbox/modusbox-ui-components@1.16.22":
+  version "1.16.22"
+  resolved "https://registry.yarnpkg.com/@modusbox/modusbox-ui-components/-/modusbox-ui-components-1.16.22.tgz#5b622dfdaf22b311cb1e9a25486153aa66d4b44b"
+  integrity sha512-99y+b3rouM18M9TYhU9MXSlJrLgmklHbEaRnPIgVoYSMFrg2NuLmedo6FXrFMdkHrR2pxpGhmqlTH+g8NzMd7A==
   dependencies:
     copy-webpack-plugin "^5.0.0"
     eslint-config-prettier "6.3.0"
