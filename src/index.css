@@ -125,8 +125,10 @@ p {
 .forminput__input-message {
   height: 0px;
 }
+.forminput-checkbox {
+  margin: 0px;
+}
 
 .forminput__row {
   flex-basis: 100%;
-
 }
