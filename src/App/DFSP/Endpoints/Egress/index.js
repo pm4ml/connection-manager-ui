@@ -171,15 +171,16 @@ const EgressIp = ({
               />
             </div>
             {portIndex > 0 && (
-              <ControlIcon
-                icon="close-small"
-                className="egress__ip__port-remove"
-                size={16}
-                tooltip="Remove Port"
-                kind="danger"
-                onClick={() => onRemovePort(portIndex, index)}
-                disabled={portIndex === 0}
-              />
+              <div className="egress__ip__port-remove">
+                <ControlIcon
+                  icon="close-small"
+                  size={16}
+                  tooltip="Remove Port"
+                  kind="danger"
+                  onClick={() => onRemovePort(portIndex, index)}
+                  disabled={portIndex === 0}
+                />
+              </div>
             )}
           </div>
         ))}
