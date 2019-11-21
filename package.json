@@ -3,7 +3,7 @@
   "version": "1.6.9",
   "private": true,
   "dependencies": {
-    "@modusbox/modusbox-ui-components": "1.16.22",
+    "@modusbox/modusbox-ui-components": "1.16.25",
     "babel-polyfill": "^6.26.0",
     "connected-react-router": "^6.3.2",
     "fetch-mock": "^7.3.3",
