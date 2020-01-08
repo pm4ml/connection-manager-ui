@@ -105,7 +105,4 @@ const actionProps = dispatch => ({
 
 const MountedPasswordReset = withMount(PasswordReset, 'onMount');
 
-export default connect(
-  stateProps,
-  actionProps
-)(MountedPasswordReset);
+export default connect(stateProps, actionProps)(MountedPasswordReset);

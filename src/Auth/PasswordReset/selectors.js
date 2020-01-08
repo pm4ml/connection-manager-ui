@@ -20,11 +20,7 @@ const getPasswordResetModel = createSelector(
   })
 );
 
-const getPasswordResetValidation = createSelector(
-  getPassword,
-  getPasswordResetNewPassword,
-  getPasswordResetValidators
-);
+const getPasswordResetValidation = createSelector(getPassword, getPasswordResetNewPassword, getPasswordResetValidators);
 
 export const getValidationResult = createSelector(
   getPasswordResetModel,
@@ -32,9 +28,6 @@ export const getValidationResult = createSelector(
   toValidationResult
 );
 
-export const getIsPasswordResetSubmitEnabled = createSelector(
-  getValidationResult,
-  getIsValid
-);
+export const getIsPasswordResetSubmitEnabled = createSelector(getValidationResult, getIsValid);
 
 export const getIsPasswordResetPending = createPendingSelector('passwordReset.create');
