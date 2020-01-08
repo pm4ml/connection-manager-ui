@@ -1,26 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button, FormInput, MessageBox } from 'components';
-import './PasswordChange.scss';
+import { withMount } from 'utils/hocs';
+import './PasswordReset.scss';
 
 import {
-  getPasswordChangeOldPassword,
-  getPasswordChangeNewPassword,
-  getPasswordChangeConfirmPassword,
-  getIsPasswordChangePending,
-  getPasswordChangeError,
-  getIsPasswordChangeSubmitEnabled,
+  getPasswordResetOldPassword,
+  getPasswordResetNewPassword,
+  getPasswordResetConfirmPassword,
+  getIsPasswordResetPending,
+  getPasswordResetError,
+  getIsPasswordResetSubmitEnabled,
   getValidationResult,
 } from './selectors';
 
 import {
-  changePasswordChangeOldPassword,
-  changePasswordChangeNewPassword,
-  changePasswordChangeConfirmPassword,
+  changePasswordResetOldPassword,
+  changePasswordResetNewPassword,
+  changePasswordResetConfirmPassword,
   changePassword,
+  redirectIfNotFirstTimeLogin,
 } from './actions';
 
-const PasswordChange = ({
+const PasswordReset = ({
   oldPassword,
   newPassword,
   confirmPassword,
@@ -29,21 +31,21 @@ const PasswordChange = ({
   isSubmitEnabled,
   isAuthFailed,
   isAuthPending,
-  onOldPasswordChange,
-  onNewPasswordChange,
-  onConfirmPasswordChange,
-  onPasswordChangeClick,
+  onOldPasswordReset,
+  onNewPasswordReset,
+  onConfirmPasswordReset,
+  onPasswordResetClick,
 }) => (
   <div className="auth">
     <div className="auth__form">
-      {isAuthFailed && <MessageBox icon="warning-sign" kind="danger" message={error} size={16} fontSize={14} />}
+      {isAuthFailed && <MessageBox icon="warning-sign" kind="error" message={error} size={16} fontSize={14} />}
 
       <div className="auth__form__password">
         <FormInput
-          type="text"
+          type="password"
           placeholder="Old Password"
           value={oldPassword}
-          onChange={onOldPasswordChange}
+          onChange={onOldPasswordReset}
           validation={validation.fields.oldPassword}
           disabled={isAuthPending}
           autofocus={true}
@@ -54,7 +56,7 @@ const PasswordChange = ({
           type="password"
           placeholder="New Password"
           value={newPassword}
-          onChange={onNewPasswordChange}
+          onChange={onNewPasswordReset}
           validation={validation.fields.newPassword}
           disabled={isAuthPending}
         />
@@ -65,7 +67,7 @@ const PasswordChange = ({
           type="password"
           placeholder="Confirm New Password"
           value={confirmPassword}
-          onChange={onConfirmPasswordChange}
+          onChange={onConfirmPasswordReset}
           validation={validation.fields.confirmPassword}
           disabled={isAuthPending}
         />
@@ -73,10 +75,10 @@ const PasswordChange = ({
       <div className="auth__form__submit">
         <Button
           kind="primary"
-          label="Login"
+          label="Change Password"
           className="auth__form__submit__btn"
           disabled={!isSubmitEnabled}
-          onClick={onPasswordChangeClick}
+          onClick={onPasswordResetClick}
           pending={isAuthPending}
         />
       </div>
@@ -85,22 +87,25 @@ const PasswordChange = ({
 );
 
 const stateProps = state => ({
-  oldPassword: getPasswordChangeOldPassword(state),
-  newPassword: getPasswordChangeNewPassword(state),
-  confirmPassword: getPasswordChangeConfirmPassword(state),
+  oldPassword: getPasswordResetOldPassword(state),
+  newPassword: getPasswordResetNewPassword(state),
+  confirmPassword: getPasswordResetConfirmPassword(state),
   validation: getValidationResult(state),
-  error: getPasswordChangeError(state),
-  isAuthPending: getIsPasswordChangePending(state),
-  isSubmitEnabled: getIsPasswordChangeSubmitEnabled(state),
+  error: getPasswordResetError(state),
+  isAuthPending: getIsPasswordResetPending(state),
+  isSubmitEnabled: getIsPasswordResetSubmitEnabled(state),
 });
 const actionProps = dispatch => ({
-  onOldPasswordChange: oldPassword => dispatch(changePasswordChangeOldPassword(oldPassword)),
-  onNewPasswordChange: newPassword => dispatch(changePasswordChangeNewPassword(newPassword)),
-  onConfirmPasswordChange: confirmPassword => dispatch(changePasswordChangeConfirmPassword(confirmPassword)),
-  onPasswordChangeClick: () => dispatch(changePassword()),
+  onOldPasswordReset: oldPassword => dispatch(changePasswordResetOldPassword(oldPassword)),
+  onNewPasswordReset: newPassword => dispatch(changePasswordResetNewPassword(newPassword)),
+  onConfirmPasswordReset: confirmPassword => dispatch(changePasswordResetConfirmPassword(confirmPassword)),
+  onPasswordResetClick: () => dispatch(changePassword()),
+  onMount: () => dispatch(redirectIfNotFirstTimeLogin()),
 });
+
+const MountedPasswordReset = withMount(PasswordReset, 'onMount');
 
 export default connect(
   stateProps,
   actionProps
-)(PasswordChange);
+)(MountedPasswordReset);

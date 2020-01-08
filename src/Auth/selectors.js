@@ -8,9 +8,11 @@ export const getUsername = state => state.auth.login.username;
 export const getPassword = state => state.auth.login.password;
 export const getIsAuthDisabled = state => state.auth.login.isDisabled;
 export const getIsAuthFailed = state => state.auth.login.isFailed;
-export const getAuthError = state => state.auth.login.error;
+export const getAuthMessage = state => state.auth.login.message;
+export const getAuthMessageType = state => state.auth.login.messageType;
 export const getJwt = state => state.auth.login.jwt;
 export const getQRProps = state => state.auth.login.QRProps;
+export const getUserGuid = state => state.auth.login.userGuid;
 export const getExpiration = state => state.auth.login.expiration;
 
 export const getLoggedDfspId = createSelector(

@@ -56,6 +56,7 @@ class TOTPQR extends React.Component {
           message="This QR will be used to obtain a 6 digit code via an authenticator app"
           size={24}
           fontSize={15}
+          className="totp__confirm__message"
         />
         <div className="totp__confirm__ack">
           <Checkbox label="I have scanned the QR" checked={isQrScanAcknowledged} onChange={onQRScanAcknowledge} />

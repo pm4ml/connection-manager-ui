@@ -7,13 +7,16 @@ import {
   SET_AUTH_DISABLED,
   SET_AUTH_PENDING,
   SET_AUTH_TOKEN,
-  SET_AUTH_ERROR,
+  SET_AUTH_MESSAGE,
   SET_AUTH_QR_PROPS,
+  SET_AUTH_USER_GUID,
   CHANGE_USERNAME,
   CHANGE_PASSWORD,
   RESET_CREDENTIALS,
   UNSET_AUTH_TOKEN,
   UNSET_AUTH_QR_PROPS,
+  UNSET_AUTH_USER_GUID,
+  UNSET_AUTH_MESSAGE,
 } from './actions';
 
 const auth = isAuthEnabled => {
@@ -30,8 +33,10 @@ const auth = isAuthEnabled => {
       issuer: undefined,
       label: undefined,
     },
+    userGuid: undefined,
     isFailed: false,
-    error: undefined,
+    message: undefined,
+    messageType: undefined,
   };
 
   const Auth = handleActions(
@@ -71,6 +76,10 @@ const auth = isAuthEnabled => {
           isFailed: false,
         };
       },
+      [SET_AUTH_USER_GUID]: (state, action) => ({
+        ...state,
+        userGuid: action.payload,
+      }),
       [SET_AUTH_QR_PROPS]: (state, action) => ({
         ...state,
         QRProps: {
@@ -79,10 +88,11 @@ const auth = isAuthEnabled => {
           label: action.payload.label,
         },
       }),
-      [SET_AUTH_ERROR]: (state, action) => ({
+      [SET_AUTH_MESSAGE]: (state, action) => ({
         ...state,
-        error: action.payload,
-        isFailed: true,
+        message: action.payload.message,
+        messageType: action.payload.type,
+        isFailed: action.payload.type === 'error',
       }),
       [CHANGE_USERNAME]: (state, action) => ({
         ...state,
@@ -113,6 +123,15 @@ const auth = isAuthEnabled => {
       [UNSET_AUTH_QR_PROPS]: (state, action) => ({
         ...state,
         QRProps: initialState.QRProps,
+      }),
+      [UNSET_AUTH_USER_GUID]: (state, action) => ({
+        ...state,
+        userGuid: initialState.userGuid,
+      }),
+      [UNSET_AUTH_MESSAGE]: (state, action) => ({
+        ...state,
+        message: initialState.message,
+        messageType: initialState.messageType,
       }),
     },
     initialState

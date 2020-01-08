@@ -4,7 +4,7 @@ import { reducers as api } from '@modusbox/modusbox-ui-components/dist/redux-fet
 
 import auth from 'Auth/reducers';
 import totp from 'Auth/TOTP/reducers';
-import passwordChange from 'Auth/PasswordChange/reducers';
+import passwordReset from 'Auth/PasswordReset/reducers';
 import app from 'App/reducers';
 import monetaryZones from 'App/MonetaryZones/reducers';
 
@@ -44,7 +44,7 @@ const reducers = (history, isAuthEnabled) =>
     auth: combineReducers({
       login: auth(isAuthEnabled),
       totp,
-      password: passwordChange,
+      passwordReset: passwordReset,
     }),
     app,
     monetaryZones,

@@ -9,18 +9,21 @@ import {
   getPassword,
   getIsAuthPending,
   getIsAuthFailed,
-  getAuthError,
+  getAuthMessage,
+  getAuthMessageType,
   getIsAuthSubmitEnabled,
   getValidationResult,
 } from './selectors';
 
-import { changeUsername, changePassword, login, unsetAuthQRProps } from './actions';
+import { changeUsername, changePassword, login, unsetLoginFields } from './actions';
 
 const Auth = ({
   username,
   password,
   validation,
-  error,
+  message,
+  messageType,
+  successMessage,
   isSubmitEnabled,
   isAuthFailed,
   isAuthPending,
@@ -30,7 +33,16 @@ const Auth = ({
 }) => (
   <div className="auth">
     <div className="auth__form">
-      {isAuthFailed && <MessageBox icon="warning-sign" kind="danger" message={error} size={16} fontSize={14} />}
+      {message && (
+        <MessageBox
+          icon={messageType === 'success' ? 'check-small' : 'warning-sign'}
+          kind={messageType === 'success' ? 'success' : 'danger'}
+          message={message}
+          size={16}
+          fontSize={14}
+          className="auth__form__message-box"
+        />
+      )}
 
       <div className="auth__form__username">
         <FormInput
@@ -71,7 +83,8 @@ const stateProps = state => ({
   username: getUsername(state),
   password: getPassword(state),
   validation: getValidationResult(state),
-  error: getAuthError(state),
+  message: getAuthMessage(state),
+  messageType: getAuthMessageType(state),
   isAuthPending: getIsAuthPending(state),
   isAuthFailed: getIsAuthFailed(state),
   isSubmitEnabled: getIsAuthSubmitEnabled(state),
@@ -80,7 +93,7 @@ const actionProps = dispatch => ({
   onUsernameChange: username => dispatch(changeUsername(username)),
   onPasswordChange: password => dispatch(changePassword(password)),
   onLoginClick: () => dispatch(login()),
-  onMount: () => dispatch(unsetAuthQRProps()),
+  onMount: () => dispatch(unsetLoginFields()),
 });
 
 const MountedAuth = withMount(Auth, 'onMount');
