@@ -13,7 +13,7 @@ import { setAppConfig, initApp } from 'App/actions';
 import { setAuthEnabled, setAuthDisabled } from 'Auth/actions';
 import App from 'App/index.js';
 import Auth from 'Auth/index.js';
-import PasswordChange from 'Auth/PasswordChange';
+import PasswordReset from 'Auth/PasswordReset';
 import TOTP from 'Auth/TOTP';
 import 'icons/index';
 import 'assets/normalize.css';
@@ -35,7 +35,7 @@ const Root = ({ store }) => (
       <Switch>
         <Route path="/login" exact component={Auth} />
         <Route path="/login/2fa" component={TOTP} />
-        <Route path="/login/passwordChange" component={PasswordChange} />
+        <Route path="/login/passwordreset" component={PasswordReset} />
         <Route path="/" component={App} />
         <Route component={NotFound} />
       </Switch>

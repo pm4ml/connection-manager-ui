@@ -14,7 +14,9 @@
   flex: 0 0 auto;
   border: 2px solid #eee;
   animation: fadeInAuthForm 0.5s ease-out 1 forwards;
-
+}
+.auth__form__message-box {
+  margin-bottom: 20px;
 }
 .auth__form__username {
   margin-bottom: 20px;

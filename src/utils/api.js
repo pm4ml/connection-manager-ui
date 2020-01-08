@@ -56,6 +56,12 @@ const endpoints = {
     service: services.connectionManager,
     url: '/logout',
   },
+  passwordReset: {
+    service: services.connectionManager,
+    sendAsFormUrlEncoded: true,
+    handleError: () => null,
+    url: '/resetPassword',
+  },
   environments: {
     service: services.connectionManager,
     url: '/environments',

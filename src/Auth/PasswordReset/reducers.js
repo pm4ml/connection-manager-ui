@@ -1,10 +1,10 @@
 import { handleActions } from 'redux-actions';
 
 import {
-  CHANGE_PASSWORD_CHANGE_OLD_PASSWORD,
-  CHANGE_PASSWORD_CHANGE_NEW_PASSWORD,
-  CHANGE_PASSWORD_CHANGE_CONFIRM_PASSWORD,
-  SET_PASSWORD_CHANGE_ERROR,
+  CHANGE_PASSWORD_RESET_OLD_PASSWORD,
+  CHANGE_PASSWORD_RESET_NEW_PASSWORD,
+  CHANGE_PASSWORD_RESET_CONFIRM_PASSWORD,
+  SET_PASSWORD_RESET_ERROR,
 } from './actions';
 
 const initialState = {
@@ -16,24 +16,24 @@ const initialState = {
   error: undefined,
 };
 
-const PasswordChange = handleActions(
+const PasswordReset = handleActions(
   {
-    [CHANGE_PASSWORD_CHANGE_OLD_PASSWORD]: (state, action) => ({
+    [CHANGE_PASSWORD_RESET_OLD_PASSWORD]: (state, action) => ({
       ...state,
       oldPassword: action.payload,
       isFailed: false,
     }),
-    [CHANGE_PASSWORD_CHANGE_NEW_PASSWORD]: (state, action) => ({
+    [CHANGE_PASSWORD_RESET_NEW_PASSWORD]: (state, action) => ({
       ...state,
       newPassword: action.payload,
       isFailed: false,
     }),
-    [CHANGE_PASSWORD_CHANGE_CONFIRM_PASSWORD]: (state, action) => ({
+    [CHANGE_PASSWORD_RESET_CONFIRM_PASSWORD]: (state, action) => ({
       ...state,
       confirmPassword: action.payload,
       isFailed: false,
     }),
-    [SET_PASSWORD_CHANGE_ERROR]: (state, action) => ({
+    [SET_PASSWORD_RESET_ERROR]: (state, action) => ({
       ...state,
       error: action.payload,
       isFailed: true,
@@ -42,5 +42,5 @@ const PasswordChange = handleActions(
   initialState
 );
 
-export default PasswordChange;
+export default PasswordReset;
 export { initialState };

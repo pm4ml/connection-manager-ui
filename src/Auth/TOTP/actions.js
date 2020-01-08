@@ -2,7 +2,7 @@ import { createAction } from 'redux-actions';
 import { replace } from 'connected-react-router';
 import api from 'utils/api';
 import { is200, is401, is500 } from 'utils/http';
-import { setAuthToken, setAuthError, resetCredentials } from '../actions';
+import { setAuthToken, setAuthError } from '../actions';
 import { getUsername, getPassword } from '../selectors';
 import { getCode } from './selectors';
 import { TOTP_MESSAGES } from './constants';
@@ -45,7 +45,6 @@ export const toptLogin = () => async (dispatch, getState) => {
     dispatch(setAuthError(error));
     dispatch(replace('/login'));
   } else {
-    dispatch(resetCredentials());
     dispatch(setAuthToken(token));
     dispatch(replace('/'));
   }
