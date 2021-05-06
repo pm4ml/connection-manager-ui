@@ -1,0 +1,205 @@
+.progress-tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+.progress-tabs--flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.progress-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 80px;
+  padding: 5px 6px;
+  border-bottom: 3px solid;
+  flex: 0 0 auto;
+}
+.progress-tab__title {
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.progress-tab__description {
+  text-align: center;
+  margin: 10px 0px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.progress-tab__status {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 20px;
+}
+.progress-tab__status-circle {
+  height: 10px;
+  width: 10px;
+  min-width: 10px;
+  border-radius: 5px;
+  background: #f00;
+}
+.progress-tab__status-text {
+  margin-left: 6px;
+}
+.progress-tab__status-label {
+  margin-left: 20px;
+}
+
+.progress-tab--active {
+  transition: all 0.2s ease-out;
+}
+.progress-tab--flex {
+  flex: 1 1 auto;
+}
+.progress-tab--clickable {
+  cursor: pointer;
+}
+.progress-tab--primary {
+  $color: #4fc7e7;
+  color: $color;
+  border-color: $color;
+  .progress-tab__status-circle {
+    background-color: $color;
+  }
+
+  &.progress-tab--active {
+    color: #fff;
+    background-color: $color;
+    .progress-tab__status-circle {
+      background-color: #fff;
+    }
+  }
+}
+.progress-tab--secondary {
+  $color: #226291;
+  color: $color;
+  border-color: $color;
+  .progress-tab__status-circle {
+    background-color: $color;
+  }
+
+  &.progress-tab--active {
+    color: #fff;
+    background-color: $color;
+    .progress-tab__status-circle {
+      background-color: #fff;
+    }
+  }
+}
+.progress-tab--tertiary {
+  $color: #bbbbbb;
+  color: $color;
+  border-color: $color;
+  .progress-tab__status-circle {
+    background-color: $color;
+  }
+
+  &.progress-tab--active {
+    color: #fff;
+    background-color: $color;
+    .progress-tab__status-circle {
+      background-color: #fff;
+    }
+  }
+}
+.progress-tab--green {
+  $color: #17bc65;
+  color: $color;
+  border-color: $color;
+  .progress-tab__status-circle {
+    background-color: $color;
+  }
+
+  &.progress-tab--active {
+    color: #fff;
+    background-color: $color;
+    .progress-tab__status-circle {
+      background-color: #fff;
+    }
+  }
+}
+.progress-tab--danger {
+  $color: #d1344e;
+  color: $color;
+  border-color: $color;
+  .progress-tab__status-circle {
+    background-color: $color;
+  }
+
+  &.progress-tab--active {
+    color: #fff;
+    background-color: $color;
+    .progress-tab__status-circle {
+      background-color: #fff;
+    }
+  }
+}
+.progress-tab--warning {
+  $color: #f49935;
+  color: $color;
+  border-color: $color;
+  .progress-tab__status-circle {
+    background-color: $color;
+  }
+
+  &.progress-tab--active {
+    color: #fff;
+    background-color: $color;
+    .progress-tab__status-circle {
+      background-color: #fff;
+    }
+  }
+}
+.progress-tab--dark {
+  $color: #000;
+  color: $color;
+  border-color: $color;
+  .progress-tab__status-circle {
+    background-color: $color;
+  }
+
+  &.progress-tab--active {
+    color: #fff;
+    background-color: $color;
+    .progress-tab__status-circle {
+      background-color: #fff;
+    }
+  }
+}
+.progress-tab--disabled {
+  $color: #ccc;
+  color: $color;
+  border-color: $color;
+  .progress-tab__status-circle {
+    background-color: $color;
+  }
+
+  &.progress-tab--active {
+    color: #fff;
+    background-color: $color;
+    .progress-tab__status-circle {
+      background-color: #fff;
+    }
+  }
+}
+
+.progress-tab__last-tab {
+  background-color: #4fc7e7;
+  width: 30px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .progress-tab__last-tab-text {
+    transform: rotate(-90deg);
+    color: #fff;
+  }
+}

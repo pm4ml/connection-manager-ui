@@ -1,0 +1,39 @@
+.legend__container {
+  display: flex;
+  flex-direction: row;
+}
+
+.legend__container--vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.legend__item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 5px;
+}
+.legend__item__descriptor {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.legend__item__color {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  margin: 5px;
+}
+
+.legend__item__label {
+  font-size: 13px;
+}
+
+.legend__item__value {
+  font-size: 13px;
+  color: #333;
+  font-weight: bold;
+}

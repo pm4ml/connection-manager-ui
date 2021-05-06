@@ -1,0 +1,88 @@
+.dashboard {
+}
+
+.dashboard__today__graph-loader,
+.dashboard__flow__graph-loader {
+  height: 300px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.dashboard__today__graph-container,
+.dashboard__flow__graph-container {
+  background: #fff;
+  height: 300px;
+  width: 100%;
+}
+
+.dashboard__today__recap-container,
+.dashboard__flow__recap-container {
+  border: 1px solid #39f;
+  min-height: 250px;
+  height: 100%;
+  min-width: 200px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard__flow__section,
+.dashboard__today__section {
+  margin-bottom: 20px;
+}
+
+.dashboard__overview__section {
+  margin-bottom: 20px;
+}
+.dashboard__overview__loader {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.dashboard__overview__list {
+  margin: 10px;
+}
+
+.dashboard__overview__list__status-indicator.el-datalist__header-cell,
+.dashboard__overview__list__status-indicator.el-datalist__item-cell {
+  flex: 0 0 40px;
+  justify-content: center;
+}
+
+.dashboard__overview-status {
+  color: #053035;
+  margin: 5px;
+}
+.dashboard__overview-status--open {
+  background: #4fc7e7;
+}
+.dashboard__overview-status--on-track {
+  background: #12d670;
+}
+.dashboard__overview-status--has-errors {
+  background: #e23a54;
+}
+.dashboard__overview-status--overdue {
+  background: #ff9016;
+}
+
+.dashboard__overview-status__indicator {
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+}
+
+.dashboard__overview__window {
+}
+.dashboard__overview__window__batch-details-block {
+  margin-right: 20px;
+}
+
+.dashboard__overview__window__batch-dates-block {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,27 @@
+.csr {
+  margin-top: 10px;
+}
+.csr__submit {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.csr__autogenerate {
+  width: 200px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.csr__csr {
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+.csr__intermediate-chain {
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}

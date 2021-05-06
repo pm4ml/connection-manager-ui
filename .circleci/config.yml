@@ -1,0 +1,152 @@
+# CircleCI v2.1 Config
+version: "2.1"
+
+##
+# orbs
+#
+# Orbs used in this pipeline
+###
+orbs:
+  docker: circleci/docker@1.5.0
+  slack: circleci/slack@3.4.2
+
+##
+# Executors
+#
+# CircleCI Executors
+##
+executors:
+  default-docker:
+    working_directory: /home/circleci/project
+    docker:
+      - image: circleci/node:latest
+
+  default-machine:
+    machine:
+      image: ubuntu-1604:201903-01
+
+##
+# Jobs
+#
+# A map of CircleCI jobs
+##
+jobs:
+  setup:
+    executor: default-docker
+    steps:
+      - checkout
+      - run:
+          name: Update NPM install (using `yarn install`)
+          command: yarn install
+      - save_cache:
+          key: dependency-cache-v2-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+  lint:
+    executor: default-docker
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - dependency-cache-v2-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+      - run:
+          name: Run lint
+          command: yarn lint
+      - run:
+          name: Run unit tests
+          command: yarn test
+      - slack/status:
+          success_message: Linting passed in branch $CIRCLE_BRANCH
+          failure_message: Linting failed in branch $CIRCLE_BRANCH
+          webhook: $SLACK_WEBHOOK
+
+  test-unit:
+    executor: default-docker
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - dependency-cache-v2-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+      - run:
+          name: Run unit tests
+          command: yarn test
+      - slack/status:
+          success_message: Unit tests passed in branch $CIRCLE_BRANCH
+          failure_message: Unit tests failed in branch $CIRCLE_BRANCH
+          webhook: $SLACK_WEBHOOK
+
+  slack-notify-docker:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - slack/notify:
+          color: '#42e2f4'
+          message: Docker Image built and published, tag $CIRCLE_BRANCH
+          webhook: $SLACK_WEBHOOK
+
+##
+# Workflows
+#
+# CircleCI Workflow config
+##
+workflows:
+  test:
+    jobs:
+      - setup:
+          filters:
+            branches:
+              ignore:
+                - /feature*/
+                - /bugfix*/
+                - /hotfix*/
+      - lint:
+          requires:
+            - setup
+          filters:
+            branches:
+              ignore:
+                - /feature*/
+                - /bugfix*/
+                - /hotfix*/
+      - test-unit:
+          requires:
+            - setup
+          filters:
+            branches:
+              ignore:
+                - /feature*/
+                - /bugfix*/
+                - /hotfix*/
+  deploy:
+    jobs:
+      - docker/publish:
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*(\-snapshot)?(\-hotfix(\.[0-9]+))?/
+            branches:
+              ignore:
+                - /.*/
+          before_build:
+            - run:
+                name: Set image tag
+                command: |
+                  if [[ -v CIRCLE_TAG ]]; then
+                    echo 'export IMAGE_TAG=$(echo $CIRCLE_TAG | tr -d v)' >> $BASH_ENV
+                  else
+                    echo 'export IMAGE_TAG=v`grep version package.json | sed 1q | awk -F \" '\''{print $4}'\''`' >> $BASH_ENV
+                  fi
+          lint-dockerfile: false
+          image: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+          tag: $IMAGE_TAG
+          registry: $DOCKER_REGISTRY
+          docker-username: DOCKER_USER
+          docker-password: DOCKER_PASSWORD
+          after_build:
+            - slack/status:
+                success_message: Building Docker Image $CIRCLE_PROJECT_REPONAME:$IMAGE_TAG passed in branch $CIRCLE_BRANCH
+                failure_message: Building Docker Image $CIRCLE_PROJECT_REPONAME:$IMAGE_TAG failed in branch $CIRCLE_BRANCH
+                webhook: $SLACK_WEBHOOK

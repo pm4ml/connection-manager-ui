@@ -1,0 +1,93 @@
+.transfers {
+}
+
+.transfers__errors__loader,
+.transfers__transfers__loader,
+.transfers__statuses__loader {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.transfers__errors__list,
+.transfers__transfers__list,
+.transfers__statuses__list {
+  margin: 10px;
+}
+
+.transfers__charts__loader {
+}
+
+.transfers__successful-perc__section,
+.transfers__avg-time__section {
+  margin-bottom: 20px;
+}
+
+.transfers__successful-perc__graph-loader,
+.transfers__avg-time__graph-loader {
+  display: flex;
+  height: 300px;
+  justify-content: center;
+  align-items: center;
+}
+
+.transfers__successul-perc__graph-container,
+.transfers__avg-time__graph-container {
+  height: 300px;
+}
+
+.transfers__statuses__status {
+  background: transparent;
+  margin: 5px;
+}
+.transfers__statuses__status--successful {
+  border-color: #8721a9;
+  color: #8721a9;
+}
+.transfers__statuses__status--pending {
+  border-color: #12d670;
+  color: #12d670;
+}
+.transfers__statuses__status--has-errors {
+  border-color: #e23a54;
+  color: #e23a54;
+}
+
+.transfers__errors__section {
+  margin-bottom: 20px;
+}
+
+.transfers__errors__graph-display-label {
+  width: 120px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.transfers__errors__graph-chart-container {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.transfers__errors__graph-legend-container {
+  width: 300px;
+  height: 180px;
+}
+.transfers__errors__graph-container {
+}
+
+.transfers__errors__graph-legend {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.transfers__errors__button {
+  margin-bottom: 10px;
+}
+
+.transfers__errors__list-container {
+  margin: 10px;
+}

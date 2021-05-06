@@ -1,0 +1,141 @@
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+  font-family: Fira Sans, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: #00a2df;
+}
+a:hover {
+  color: #48c1ed;
+}
+p {
+  margin: 20px 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #3a3b3c;
+  font-style: normal;
+  font-family: Fira Sans, sans-serif;
+  font-weight: 100;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-size: 3rem;
+  letter-spacing: -0.05rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  letter-spacing: -0.03rem;
+}
+
+h3 {
+  font-size: 2rem;
+  letter-spacing: -0.025rem;
+}
+
+h4 {
+  font-size: 1.8rem;
+  letter-spacing: -0.02rem;
+}
+
+h5 {
+  font-size: 1.6rem;
+  letter-spacing: -0.02rem;
+}
+
+h6 {
+  font-size: 1.2rem;
+  letter-spacing: 0;
+}
+
+p {
+  font-size: 1.4rem;
+  letter-spacing: 0;
+}
+
+p {
+  font-family: Fira Sans, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.el-datalist__header-cell.icon-column,
+.el-datalist__item-cell.icon-column {
+  flex: 0 0 40px;
+  justify-content: center;
+}
+
+.el-modal__body:not(.el-modal__body--tabbed) .forminput-input {
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 400px;
+  flex-grow: 0;
+}
+
+.el-datalist__header-cell.col-100,
+.el-datalist__item-cell.col-100 {
+  flex: 0 0 100px;
+}
+
+.forminput-input {
+  flex-basis: 100%;
+  width: 100%;
+  margin: 0px;
+}
+.forminput__input-message {
+  height: 0px;
+}
+.forminput-checkbox {
+  margin: 0px;
+}
+
+.forminput__row {
+  flex-basis: 100%;
+}

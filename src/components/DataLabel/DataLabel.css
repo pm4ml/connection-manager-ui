@@ -1,0 +1,24 @@
+.data-label {
+  color: inherit;
+}
+.data-label--large {
+  font-size: 24px;
+}
+.data-label--medium {
+  font-size: 18px;
+}
+.data-label--small {
+  font-size: 13px;
+}
+.data-label--highlight {
+  color: #06c;
+}
+.data-label--light {
+  color: #ccc;
+}
+.data-label--underline {
+  text-decoration: underline;
+}
+.data-label--bold {
+  font-weight: bold;
+}

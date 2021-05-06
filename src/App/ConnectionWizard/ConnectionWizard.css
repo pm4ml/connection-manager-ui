@@ -1,0 +1,18 @@
+.connection-wizard__loader {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.connection-wizard__phases-header {
+  margin-bottom: 20px;
+}
+
+.connection-wizard__phases__back-link {
+  margin-left: 40px;
+}
+
+.connection-wizard__steps {
+  max-width: 150px;
+}

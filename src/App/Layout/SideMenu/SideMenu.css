@@ -1,0 +1,5 @@
+.side-menu {
+  flex: 0 0 200px;
+  border-right: 1px solid #ccc;
+  background: #eee;
+}

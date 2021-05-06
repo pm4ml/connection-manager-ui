@@ -1,0 +1,48 @@
+.dfsps-jws {
+  margin-top: 10px;
+}
+
+.dfsps-jws__filter {
+  margin-bottom: 20px;
+}
+
+.dfsps-jws__dfsp {
+  border-bottom: 2px solid #eee;
+  padding: 20px 0px;
+}
+.dfsps-jws__title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: ubuntu;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+.dfsps-jws__name {
+  font-weight: bold;
+}
+.dfsps-jws__spacing {
+  width: 15px;
+  text-align: center;
+}
+.dfsps-jws__environment {
+  font-size: 1.2rem;
+}
+
+.dfsps-jws__certificate-validation {
+  width: 400px;
+  margin: 10px 0px;
+}
+
+.dfsps-jws__certificate-item {
+  margin-bottom: 20px;
+}
+
+.dfsps-jws__jws-certificate,
+.dfsps-jws__intermediate-chain {
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
