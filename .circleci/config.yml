@@ -17,9 +17,9 @@ orbs:
 ##
 executors:
   default-docker:
-    working_directory: /home/circleci/project
+    working_directory: /home/circleci/project/git
     docker:
-      - image: circleci/node:latest
+      - image: node:12.19.0-alpine
 
   default-machine:
     machine:
