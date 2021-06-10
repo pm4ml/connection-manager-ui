@@ -57,10 +57,10 @@ jobs:
       - run:
           name: Run unit tests
           command: yarn test
-      - slack/status:
-          success_message: Linting passed in branch $CIRCLE_BRANCH
-          failure_message: Linting failed in branch $CIRCLE_BRANCH
-          webhook: $SLACK_WEBHOOK
+#      - slack/status:
+#          success_message: Linting passed in branch $CIRCLE_BRANCH
+#          failure_message: Linting failed in branch $CIRCLE_BRANCH
+#          webhook: $SLACK_WEBHOOK
 
   test-unit:
     executor: default-docker
@@ -74,19 +74,19 @@ jobs:
       - run:
           name: Run unit tests
           command: yarn test
-      - slack/status:
-          success_message: Unit tests passed in branch $CIRCLE_BRANCH
-          failure_message: Unit tests failed in branch $CIRCLE_BRANCH
-          webhook: $SLACK_WEBHOOK
+#      - slack/status:
+#          success_message: Unit tests passed in branch $CIRCLE_BRANCH
+#          failure_message: Unit tests failed in branch $CIRCLE_BRANCH
+#          webhook: $SLACK_WEBHOOK
 
-  slack-notify-docker:
-    docker:
-      - image: circleci/node:latest
-    steps:
-      - slack/notify:
-          color: '#42e2f4'
-          message: Docker Image built and published, tag $CIRCLE_BRANCH
-          webhook: $SLACK_WEBHOOK
+#  slack-notify-docker:
+#    docker:
+#      - image: circleci/node:latest
+#    steps:
+#      - slack/notify:
+#          color: '#42e2f4'
+#          message: Docker Image built and published, tag $CIRCLE_BRANCH
+#          webhook: $SLACK_WEBHOOK
 
 ##
 # Workflows
@@ -145,8 +145,8 @@ workflows:
           registry: $DOCKER_REGISTRY
           docker-username: DOCKER_USER
           docker-password: DOCKER_PASSWORD
-          after_build:
-            - slack/status:
-                success_message: Building Docker Image $CIRCLE_PROJECT_REPONAME:$IMAGE_TAG passed in branch $CIRCLE_BRANCH
-                failure_message: Building Docker Image $CIRCLE_PROJECT_REPONAME:$IMAGE_TAG failed in branch $CIRCLE_BRANCH
-                webhook: $SLACK_WEBHOOK
+#          after_build:
+#            - slack/status:
+#                success_message: Building Docker Image $CIRCLE_PROJECT_REPONAME:$IMAGE_TAG passed in branch $CIRCLE_BRANCH
+#                failure_message: Building Docker Image $CIRCLE_PROJECT_REPONAME:$IMAGE_TAG failed in branch $CIRCLE_BRANCH
+#                webhook: $SLACK_WEBHOOK
