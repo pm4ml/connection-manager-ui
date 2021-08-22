@@ -3,7 +3,6 @@ import api from 'utils/api';
 import { is200 } from 'utils/http';
 import { downloadFile } from 'utils/html';
 import { showSuccessToast, showErrorModal } from 'App/actions';
-import { getEnvironmentId } from 'App/selectors';
 import { getHubExternalCaRootCertificate, getHubExternalCaIntermediateChain, getHubExternalCaName } from './selectors';
 
 export const RESET_HUB_EXTERNAL_CA = 'HUB EXTERNAL CA / Reset';
@@ -31,8 +30,7 @@ export const showHubExternalCaIntermediateChainModal = createAction(SHOW_HUB_EXT
 export const hideHubExternalCaIntermediateChainModal = createAction(HIDE_HUB_EXTERNAL_CA_INTERMEDIATE_CHAIN_MODAL);
 
 export const storeHubExternalCas = () => async (dispatch, getState) => {
-  const environmentId = getEnvironmentId(getState());
-  const { data, status } = await dispatch(api.hubExternalCas.read({ environmentId }));
+  const { data, status } = await dispatch(api.hubExternalCas.read());
   if (is200(status)) {
     dispatch(setHubExternalCaCertificates(data));
   } else {
@@ -41,7 +39,6 @@ export const storeHubExternalCas = () => async (dispatch, getState) => {
 };
 
 export const submitHubExternalCa = () => async (dispatch, getState) => {
-  const environmentId = getEnvironmentId(getState());
   const name = getHubExternalCaName(getState());
   const rootCertificate = getHubExternalCaRootCertificate(getState());
   const intermediateChain = getHubExternalCaIntermediateChain(getState());
@@ -51,7 +48,7 @@ export const submitHubExternalCa = () => async (dispatch, getState) => {
     intermediateChain,
     type: 'EXTERNAL',
   };
-  const { status, data } = await dispatch(api.hubExternalCas.create({ environmentId, body }));
+  const { status, data } = await dispatch(api.hubExternalCas.create({ body }));
   if (is200(status)) {
     dispatch(showSuccessToast());
     dispatch(resetHubExternalCaForm());

@@ -27,9 +27,9 @@ const initialState = {
   hubCaState: undefined,
   hubCaCountry: undefined,
   hubCaHosts: [],
-  hubCaRootCertificate: undefined,
-  hubCaRootCertificateInfo: undefined,
-  isHubCaRootCertificateModalVisible: false,
+  hubCa: undefined,
+  hubCaInfo: undefined,
+  isHubCaModalVisible: false,
 };
 
 const HubCa = handleActions(
@@ -94,11 +94,11 @@ const HubCa = handleActions(
     }),
     [SHOW_HUB_CA_ROOT_CERTIFICATE_MODAL]: (state, action) => ({
       ...state,
-      isHubCaRootCertificateModalVisible: true,
+      isHubCaModalVisible: true,
     }),
     [HIDE_HUB_CA_ROOT_CERTIFICATE_MODAL]: (state, action) => ({
       ...state,
-      isHubCaRootCertificateModalVisible: false,
+      isHubCaModalVisible: false,
     }),
   },
   initialState
