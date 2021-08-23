@@ -2,7 +2,6 @@ import { createAction } from 'redux-actions';
 import api from 'utils/api';
 import { is200 } from 'utils/http';
 import { downloadFile } from 'utils/html';
-import { getEnvironmentId } from 'App/selectors';
 
 export const RESET_DFSP_HUB_EXTERNAL_CA = 'DFSP HUB EXTERNAL CA / Reset';
 export const SET_DFSP_HUB_EXTERNAL_CA_ERROR = 'DFSP HUB EXTERNAL CA / Set Root Cert Error';
@@ -27,8 +26,7 @@ export const hideDfspHubExternalCaIntermediateChainModal = createAction(
 );
 
 export const storeDfspHubExternalCas = () => async (dispatch, getState) => {
-  const environmentId = getEnvironmentId(getState());
-  const { data, status } = await dispatch(api.hubExternalCas.read({ environmentId }));
+  const { data, status } = await dispatch(api.hubExternalCas.read());
   if (is200(status)) {
     dispatch(setDfspHubExternalCaCertificates(data));
   } else {

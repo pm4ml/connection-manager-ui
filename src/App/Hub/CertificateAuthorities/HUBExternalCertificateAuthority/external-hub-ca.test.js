@@ -1,6 +1,5 @@
 import { fetchMock, MATCHED } from 'fetch-mock';
 import prepareStore, { getStore } from 'tests/store';
-import environments from 'tests/resources/environments.json';
 
 import {
   resetHubExternalCa,
@@ -92,7 +91,7 @@ describe('Test the HUB EXTERNAL CA thunk actions', () => {
   ];
 
   beforeEach(async () => {
-    const store = prepareStore({ environments, environmentId: environments[0].id });
+    const store = prepareStore();
     ({ dispatch, getState } = store);
 
     fetchMock.restore();
@@ -148,7 +147,7 @@ describe('Test the api pending selectors', () => {
   };
 
   beforeEach(async () => {
-    const store = prepareStore({ environments, environmentId: environments[0].id });
+    const store = prepareStore();
     ({ dispatch, getState } = store);
 
     fetchMock.restore();
