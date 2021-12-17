@@ -3,7 +3,7 @@ import api from 'utils/api';
 import { is200, is404 } from 'utils/http';
 import { downloadFile } from 'utils/html';
 import { showSuccessToast, showErrorModal } from 'App/actions';
-import { getHubCaModel, getHubCa } from './selectors';
+import { getHubCaModel, getHubCaRootCertificate } from './selectors';
 
 export const RESET_HUB_CA = 'HUB CA / Reset';
 export const SET_HUB_CA_ERROR = 'HUB CA / Set Root Cert Error';
@@ -40,9 +40,11 @@ export const hideHubCaModal = createAction(HIDE_HUB_CA_ROOT_CERTIFICATE_MODAL);
 export const storeHubCa = () => async (dispatch, getState) => {
   const { data, status } = await dispatch(api.hubCa.read());
   if (is200(status) || is404(status)) {
-    const { certificate, certInfo } = data;
-    dispatch(setHubCa(certificate));
-    dispatch(setHubCaInfo(certInfo));
+    if (data.type === 'INTERNAL') {
+      const { rootCertificate, rootCertificateInfo } = data;
+      dispatch(setHubCa(rootCertificate));
+      dispatch(setHubCaInfo(rootCertificateInfo));
+    }
   } else {
     dispatch(setHubCaError(data));
   }
@@ -60,6 +62,6 @@ export const submitHubCa = () => async (dispatch, getState) => {
 };
 
 export const downloadHubCa = () => (dispatch, getState) => {
-  const chain = getHubCa(getState());
+  const chain = getHubCaRootCertificate(getState());
   downloadFile(chain, `ca_chain.pem`);
 };

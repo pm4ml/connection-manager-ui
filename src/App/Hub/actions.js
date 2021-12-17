@@ -7,7 +7,7 @@ import { resetHubUnprocessed, storeUnprocessedEndpoints } from './UnprocessedEnd
 import { resetHubCa, storeHubCa } from './CertificateAuthorities/HUBCertificateAuthority/actions';
 import {
   resetHubExternalCa,
-  storeHubExternalCas,
+  storeHubExternalCa,
 } from './CertificateAuthorities/HUBExternalCertificateAuthority/actions';
 import { resetHubDfspCas, storeHubDfspCas } from './CertificateAuthorities/DFSPCertificateAuthority/actions';
 import { resetHubSentCsrs, storeHubSentCsrs } from './TLSClientCertificates/SentCSRs/actions';
@@ -42,7 +42,7 @@ export const initHub = () => async (dispatch, getState) => {
   dispatch(storeHubEgressIps());
   dispatch(storeHubEndpoints());
   dispatch(storeUnprocessedEndpoints());
-  dispatch(storeHubExternalCas());
+  dispatch(storeHubExternalCa());
   dispatch(storeHubDfspCas());
   dispatch(storeHubDfspCsrs());
   dispatch(storeHubDfspSCServerCertificates());

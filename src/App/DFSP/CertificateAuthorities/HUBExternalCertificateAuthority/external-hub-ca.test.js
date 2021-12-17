@@ -14,7 +14,7 @@ import {
 
 import {
   getDfspHubExternalCaError,
-  getDfspHubExternalCaCertificates,
+  getDfspHubExternalCaCertificate,
   getIsDfspHubExternalCaRootCertificateModalVisible,
   getIsDfspHubExternalCaIntermediateChainModalVisible,
   getIsDfspHubExternalCaReadPending,
@@ -84,9 +84,9 @@ describe('Test the HUB EXTERNAL CA thunk actions', () => {
     fetchMock.get('end:/cas', fetchResponse);
     await dispatch(storeDfspHubExternalCas());
     expect(fetchMock.calls(MATCHED)).toHaveLength(1);
-    expect(getDfspHubExternalCaCertificates(getState())).toHaveLength(1);
+    expect(getDfspHubExternalCaCertificate(getState())).toHaveLength(1);
 
-    const [certificate] = getDfspHubExternalCaCertificates(getState());
+    const [certificate] = getDfspHubExternalCaCertificate(getState());
     expect(certificate.rootCertificate).toBe('ROOT_CERT');
     expect(certificate.intermediateChain).toBe('CHAIN');
     expect(certificate.name).toBe('test');

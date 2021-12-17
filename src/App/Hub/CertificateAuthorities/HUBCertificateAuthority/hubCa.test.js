@@ -30,8 +30,8 @@ import {
   getHubCaState,
   getHubCaCountry,
   getHubCaHosts,
-  getHubCa,
-  getHubCaInfo,
+  getHubCaRootCertificate,
+  getHubCaRootCertificateInfo,
   getIsHubCaModalVisible,
   getHubCaModel,
   getIsHubCaPending,
@@ -65,12 +65,12 @@ describe('Test the hub ca actions', () => {
 
   it('Should set the root cert', () => {
     dispatch(setHubCa('ROOT_CERT'));
-    expect(getHubCa(getState())).toBe('ROOT_CERT');
+    expect(getHubCaRootCertificate(getState())).toBe('ROOT_CERT');
   });
 
   it('Should set the root cert info', () => {
     dispatch(setHubCaInfo({}));
-    expect(getHubCaInfo(getState())).toEqual({});
+    expect(getHubCaRootCertificateInfo(getState())).toEqual({});
   });
 
   it('Should set the common name', () => {
@@ -151,7 +151,7 @@ describe('Test the hub ca thunk actions', () => {
     fetchMock.get('end:/ca/rootCert', fetchResponse);
     await dispatch(storeHubCa());
     expect(fetchMock.calls(MATCHED)).toHaveLength(1);
-    expect(getHubCa(getState())).toBe('ROOT_CERT');
+    expect(getHubCaRootCertificate(getState())).toBe('ROOT_CERT');
   });
 
   it('Should set the error when read operation is not successful', async () => {

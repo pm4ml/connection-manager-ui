@@ -27,8 +27,8 @@ const initialState = {
   hubCaState: undefined,
   hubCaCountry: undefined,
   hubCaHosts: [],
-  hubCa: undefined,
-  hubCaInfo: undefined,
+  hubCaRootCertificate: undefined,
+  hubCaRootCertificateInfo: undefined,
   isHubCaModalVisible: false,
 };
 
@@ -81,17 +81,21 @@ const HubCa = handleActions(
         hubCaHosts: [...state.hubCaHosts.slice(0, index), ...state.hubCaHosts.slice(index + 1)],
       };
     },
-    [SET_HUB_CA_ROOT_CERTIFICATE]: (state, action) => ({
-      // the server sends null for a non-existing certificate
-      // causing the ui to fail on the fileuploader component
-      // so it needs to be stored as an undefined value
-      ...state,
-      hubCaRootCertificate: action.payload || null,
-    }),
-    [SET_HUB_CA_ROOT_CERTIFICATE_INFO]: (state, action) => ({
-      ...state,
-      hubCaRootCertificateInfo: action.payload,
-    }),
+    [SET_HUB_CA_ROOT_CERTIFICATE]: (state, action) => {
+      return ({
+        // the server sends null for a non-existing certificate
+        // causing the ui to fail on the fileuploader component
+        // so it needs to be stored as an undefined value
+        ...state,
+        hubCaRootCertificate: action.payload || null,
+      })
+    },
+    [SET_HUB_CA_ROOT_CERTIFICATE_INFO]: (state, action) => {
+      return ({
+        ...state,
+        hubCaRootCertificateInfo: action.payload,
+      })
+    },
     [SHOW_HUB_CA_ROOT_CERTIFICATE_MODAL]: (state, action) => ({
       ...state,
       isHubCaModalVisible: true,

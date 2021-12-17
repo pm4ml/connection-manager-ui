@@ -20,8 +20,8 @@ export const hideDfspHubCaRootCertificateModal = createAction(HIDE_DFSP_HUB_CA_R
 export const storeDfspHubCa = () => async (dispatch, getState) => {
   const { data, status } = await dispatch(api.hubCa.read());
   if (is200(status)) {
-    const { certificate } = data;
-    dispatch(setDfspHubCaRootCertificate(certificate));
+    const { rootCertificate } = data;
+    dispatch(setDfspHubCaRootCertificate(rootCertificate));
   } else if (!is404(status)) {
     dispatch(setDfspHubCaError(data));
   }

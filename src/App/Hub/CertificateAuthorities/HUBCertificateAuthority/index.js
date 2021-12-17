@@ -37,8 +37,8 @@ import {
   getHubCaHosts,
   getHubCaHostsValidationResult,
   getIsHubCaSubmitEnabled,
-  getHubCa,
-  getHubCaInfo,
+  getHubCaRootCertificate,
+  getHubCaRootCertificateInfo,
   getIsHubCaModalVisible,
   getIsHubCaPending,
 } from './selectors';
@@ -57,8 +57,8 @@ const stateProps = state => ({
   hosts: getHubCaHosts(state),
   hostValidation: getHubCaHostsValidationResult(state),
   isSubmitEnabled: getIsHubCaSubmitEnabled(state),
-  rootCertificate: getHubCa(state),
-  rootCertificateInfo: getHubCaInfo(state),
+  rootCertificate: getHubCaRootCertificate(state),
+  rootCertificateInfo: getHubCaRootCertificateInfo(state),
   isRootCertificateModalVisible: getIsHubCaModalVisible(state),
   isHubCaPending: getIsHubCaPending(state),
 });
