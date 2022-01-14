@@ -37,6 +37,8 @@ jobs:
     - name: Start cluster
       run: minikube start --driver=docker --kubernetes-version=v1.21.5
 
+    - name: Add Vault Helm Repo
+      run: helm repo add hashicorp https://helm.releases.hashicorp.com
     - name: Install Vault on cluster
       run: helm install vault hashicorp/vault --values integration_test/manifests/vault/helm-values.yaml
 
@@ -83,10 +85,6 @@ jobs:
     - name: Print docker containers to check any issues with the cluster
       if: ${{ failure() }}
       run: docker ps
-
-    - name: Print voodoo doll logs
-      if: ${{ always() }}
-      run: kubectl logs voodoo-doll
 
     - name: Print resources
       if: ${{ always() }}
