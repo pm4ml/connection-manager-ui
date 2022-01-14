@@ -39,8 +39,12 @@ jobs:
 
     - name: Add Vault Helm Repo
       run: helm repo add hashicorp https://helm.releases.hashicorp.com
+
     - name: Install Vault on cluster
       run: helm install vault hashicorp/vault --values integration_test/manifests/vault/helm-values.yaml
+
+    - name: Wait for vault
+      run: timeout 900 kubectl wait --for=condition=Ready pod --all --timeout=900s
 
     - name: Bootstrap Vault
       run: . scripts/bootstrap-vault.sh
