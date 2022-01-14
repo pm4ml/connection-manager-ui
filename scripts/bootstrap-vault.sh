@@ -9,7 +9,7 @@ kubectl exec vault-0 -- sh -c "vault operator unseal $VAULT_UNSEAL_KEY"
 VAULT_ROOT_KEY=$(cat cluster-keys.json | jq -r ".root_token")
 kubectl exec vault-0 -- sh -c "vault login $VAULT_ROOT_KEY"
 
-kubectl exec vault-0 -- sh -c " vault auth enable approle"
+kubectl exec vault-0 -- sh -c "vault auth enable approle"
 kubectl exec vault-0 -- sh -c "vault write auth/approle/role/my-role secret_id_ttl=1000m token_ttl=1000m token_max_ttl=1000m"
 kubectl exec vault-0 -- sh -c "vault read -field role_id auth/approle/role/my-role/role-id > vault/data/role-id"
 kubectl exec vault-0 -- sh -c "vault write -field secret_id -f auth/approle/role/my-role/secret-id > vault/data/secret-id"
