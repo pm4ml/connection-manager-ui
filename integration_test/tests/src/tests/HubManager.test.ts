@@ -5,6 +5,9 @@ import { HubManagerPage, DFSPRow } from '../page-objects/pages/HubManager';
 import chance from 'chance';
 import { Selector } from 'testcafe';
 
+// NOTE: There are added `t.wait` functions on `t.clicks` to give the UI time to
+//       update. This is to account for observed flakiness with test-cafe
+//       tests.
 fixture `Hub Management Feature`
   .page`${config.connectionManagerEndpoint}`
   .beforeEach(async (t) => {
@@ -29,7 +32,7 @@ test.meta({
         .wait(1000)
         .click(Selector('.input-select__options-item__label').withText('Euro'))
   // Submit DFSP
-  await t.click(HubManagerPage.getAddDfspModalSubmit).wait(2000);
+  await t.click(HubManagerPage.getAddDfspModalSubmit).wait(1000);
 
   // Check DFSP exists in data list
   const rows = await HubManagerPage.getDFSPRows();
