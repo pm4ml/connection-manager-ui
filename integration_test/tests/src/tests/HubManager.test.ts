@@ -6,8 +6,10 @@ import chance from 'chance';
 import { Selector } from 'testcafe';
 
 // NOTE: There are added `t.wait` functions on `t.clicks` to give the UI time to
-//       update. This is to account for observed flakiness with test-cafe
-//       tests.
+//       update. This is to account for observed instances of testcafe
+//       running an assertion or trying to fetch an element before
+//       a requisite page element is loaded in, for example a row being add to
+//       a data table.
 fixture `Hub Management Feature`
   .page`${config.connectionManagerEndpoint}`
   .beforeEach(async (t) => {
