@@ -9,7 +9,7 @@
     "fetch-mock": "^7.3.3",
     "history": "^4.9.0",
     "lodash": "^4.17.11",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "moment-timezone": "^0.5.25",
     "prettier": "^1.17.0",
     "qrcode": "^1.4.1",
