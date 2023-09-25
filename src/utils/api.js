@@ -18,12 +18,7 @@ const services = {
     getApplicationHeaders: () => {
       return undefined;
     },
-    credentials: state => {
-      if (state.auth.login.isDisabled) {
-        return undefined;
-      }
-      return 'include';
-    },
+    credentials: 'include',
     sendAsJson: true,
     parseAsJson: true,
     handleError: handleError,

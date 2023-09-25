@@ -150,3 +150,15 @@ Simply open the browser console and run the commands
 
 :warning: **NOTE**
 It is suggested to clear local storage and cookies after enabling and disabling authentication. It will help starting a fresh session.
+
+
+## New login approach
+Based on new requirements (see story _IPROD-189_) we need to use Keycloak to authenticate users.
+For this purposes *OAuth 2.0 authorization code flow* is used. 
+
+### Env variables for OAuth OIDC flow:
+- Set `AUTH_ENABLED=FALSE` to disable previous auth flow
+- `UI_OIDC_LOGIN_REDIRECT_URL` - URL to redirect user to provide creds and grand permissions (Keycloack)
+- `OIDC_TOKEN_PROVIDER_URL` - URL to exchange _authorization code_ for _access token_ (providing also client ID and secret)
+- `MCM_CLIENT_ID` - MCM portal client id (in Keycloak)
+- `MCM_CLIENT_SECRET` - MCM portal client secret (in Keycloak)
