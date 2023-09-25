@@ -162,7 +162,7 @@ describe('Test the hub ingress endpoints thunk actions', () => {
   ];
 
   beforeEach(async () => {
-    const store = prepareStore();
+    const store = prepareStore({});
     ({ dispatch, getState } = store);
 
     fetchMock.restore();
@@ -288,7 +288,7 @@ describe('Test the api pending selectors', () => {
   ];
 
   beforeEach(async () => {
-    const store = prepareStore();
+    const store = prepareStore({});
     ({ dispatch, getState } = store);
 
     fetchMock.restore();
