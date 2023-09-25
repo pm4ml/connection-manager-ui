@@ -44,7 +44,7 @@ describe('Test the hub thunk actions', () => {
   });
 
   it('Should initialize the hub app', async () => {
-    const store = prepareStore();
+    const store = prepareStore({});
     ({ dispatch, getState } = store);
     await dispatch(initHub());
     expect(historyMock.push).not.toHaveBeenCalled();
