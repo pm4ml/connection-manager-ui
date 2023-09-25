@@ -141,7 +141,7 @@ describe('Test the hub ca thunk actions', () => {
   };
 
   beforeEach(async () => {
-    const store = prepareStore({ url: '/undefined/hub/ca' });
+    const store = prepareStore({});
     ({ dispatch, getState } = store);
 
     fetchMock.restore();
