@@ -164,4 +164,4 @@ For this purposes *OAuth 2.0 authorization code flow* is used.
 - `MCM_CLIENT_SECRET` - MCM portal client secret (in Keycloak)
 
 ### Cookie name:
-- `MCM_COOKIE_NAME` - if not set, cookie name by default is _'MCM_SESSION'_
+- `MCM_COOKIE_NAME` - if this env variable is not set, cookie name by default is _'MCM_SESSION'_
