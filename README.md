@@ -162,3 +162,6 @@ For this purposes *OAuth 2.0 authorization code flow* is used.
 - `OIDC_TOKEN_PROVIDER_URL` - URL to exchange _authorization code_ for _access token_ (providing also client ID and secret)
 - `MCM_CLIENT_ID` - MCM portal client id (in Keycloak)
 - `MCM_CLIENT_SECRET` - MCM portal client secret (in Keycloak)
+
+### Cookie name:
+- `MCM_COOKIE_NAME` - if not set, cookie name by default is _'MCM_SESSION'_
