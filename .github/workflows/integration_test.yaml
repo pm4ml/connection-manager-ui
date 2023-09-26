@@ -16,7 +16,7 @@ jobs:
     - name: Install dependencies in environment
       run: nix-env -if integration_test/default.nix
     - name: Install kubeconform
-      run: nix-env -i kubeconform
+      run: nix-env -i nixpkgs.kubeconform
     - name: Validate integration test manifest
       run: kustomize build integration_test | kubeconform -strict -kubernetes-version 1.21.5
 
