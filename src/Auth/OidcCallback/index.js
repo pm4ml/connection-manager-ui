@@ -24,7 +24,9 @@ const OidcCallback = (envConfig) => {
           console.error(data.error);
         }
 
-        history.goBack();
+        history.length <= 3
+          ? history.push('/')
+          : history.go(-2);
       })
       .catch((err) => {
         console.error('Error exchanging authorization code:', err);
