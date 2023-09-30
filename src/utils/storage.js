@@ -14,5 +14,7 @@ const getItem = key => {
   } catch (e) {}
   return parsed;
 };
+
 const removeItem = key => localStorage.removeItem(key);
+
 export { setItem, getItem, removeItem };
