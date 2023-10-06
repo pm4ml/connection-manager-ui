@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
-const OIDC_TOKEN_ROUTE = 'oidc-token';
+import { OIDC_TOKEN_ROUTE, AFTER_LOGIN_ROUTE_KEY } from '../../constants';
 
 const OidcCallback = (envConfig) => {
   const history = useHistory();
@@ -24,14 +24,14 @@ const OidcCallback = (envConfig) => {
           console.error(data.error);
         }
 
-        history.length <= 4
-          ? history.push('/')
-          : history.go(-2);
+        const path = sessionStorage.getItem(AFTER_LOGIN_ROUTE_KEY) || '/';
+        history.push(path);
       })
       .catch((err) => {
         console.error('Error exchanging authorization code:', err);
         history.push('/');
-      });
+      })
+      .finally(() => { sessionStorage.removeItem(AFTER_LOGIN_ROUTE_KEY); });
   }, [history]);
 
   return (

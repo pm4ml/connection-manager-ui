@@ -1,9 +1,9 @@
 import { buildFetchActions } from '@modusbox/modusbox-ui-components/dist/redux-fetch';
-
-const AUTH_ERROR_CODES = [403];
+import { AUTH_ERROR_CODES, AFTER_LOGIN_ROUTE_KEY } from '../constants';
 
 const handleError = (error, status, state) => {
   if (AUTH_ERROR_CODES.includes(status)) {
+    sessionStorage.setItem(AFTER_LOGIN_ROUTE_KEY, window.location.pathname);
     window.location.assign(state.app.config.loginUrl);
     // should exit the execution of the function
     // otherwise the non-authenticated response will be
