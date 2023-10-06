@@ -4,8 +4,8 @@ const getConfig = async () => {
   const configUrl = `${protocol}//${host}/config`;
   // Using the same protocol as we've been loaded from to avoid Mixed Content error.
 
+  let isAuthEnabled = false;
   let apiBaseUrl = REACT_APP_API_BASE_URL ? REACT_APP_API_BASE_URL : `${protocol}//localhost:3001`;
-  let isAuthEnabled = true;
   let config = {};
 
   const infos = [`fetching ${configUrl}`];
@@ -15,10 +15,10 @@ const getConfig = async () => {
     config = await response.json();
     const { AUTH_ENABLED, API_BASE_URL } = config;
 
-    isAuthEnabled = AUTH_ENABLED ? AUTH_ENABLED !== 'FALSE' : isAuthEnabled;
+    isAuthEnabled = AUTH_ENABLED ? AUTH_ENABLED === 'true' : isAuthEnabled;
     apiBaseUrl = API_BASE_URL ? API_BASE_URL : apiBaseUrl;
 
-    infos.push({ AUTH_ENABLED, API_BASE_URL });
+    infos.push({ isAuthEnabled, apiBaseUrl });
     infos.push(`- after processing config, apiBaseUrl: ${apiBaseUrl}`);
   } catch (err) {
     infos.push('returned error:');

@@ -24,7 +24,7 @@ const OidcCallback = (envConfig) => {
           console.error(data.error);
         }
 
-        history.length <= 3
+        history.length <= 4
           ? history.push('/')
           : history.go(-2);
       })

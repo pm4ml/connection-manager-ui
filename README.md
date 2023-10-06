@@ -140,7 +140,7 @@ Once a new version the UI is ready to deploy simply tag the commit with a string
 
 ## Authentication
 
-Authentication is enabled by default in a production build and it cannot be disabled.
+Authentication is disabled by default.
 
 In dev mode it can be selectively enabled or disabled depending on the preference.
 Simply open the browser console and run the commands
@@ -157,7 +157,7 @@ Based on new requirements (see story _IPROD-189_) we need to use Keycloak to aut
 For this purposes *OAuth 2.0 authorization code flow* is used. 
 
 ### Env variables for OAuth OIDC flow:
-- Set `AUTH_ENABLED=FALSE` to disable previous auth flow
+- `AUTH_ENABLED` optional and disabled by default. To enable the previous auth flow set it to `true`
 - `UI_OIDC_LOGIN_REDIRECT_URL` - URL to redirect user to provide creds and grand permissions (Keycloack)
 - `OIDC_TOKEN_PROVIDER_URL` - URL to exchange _authorization code_ for _access token_ (providing also client ID and secret)
 - `MCM_CLIENT_ID` - MCM portal client id (in Keycloak)
