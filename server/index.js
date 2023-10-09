@@ -7,7 +7,7 @@ const {
   API_BASE_URL,
   AUTH_ENABLED,
   UI_OIDC_LOGIN_REDIRECT_URL,
-  MCM_CLIENT_ID,
+  OIDC_CLIENT_ID,
   MCM_COOKIE_NAME
 } = require('./config');
 
@@ -20,7 +20,7 @@ app.get('/config', (req, res) => {
     API_BASE_URL,
     AUTH_ENABLED,
     UI_OIDC_LOGIN_REDIRECT_URL,
-    MCM_CLIENT_ID,
+    OIDC_CLIENT_ID,
     MCM_COOKIE_NAME,
   };
   console.log('connection-manager-ui server: /config called, returning: ', config);

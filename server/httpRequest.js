@@ -4,8 +4,8 @@ const config = require('./config');
 
 const makeOidcPayload = (code) => querystring.stringify({
   code,
-  client_id: config.MCM_CLIENT_ID,
-  client_secret: config.MCM_CLIENT_SECRET,
+  client_id: config.OIDC_CLIENT_ID,
+  client_secret: config.OIDC_CLIENT_SECRET,
   grant_type: 'authorization_code',
 });
 

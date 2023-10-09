@@ -158,10 +158,10 @@ For this purposes *OAuth 2.0 authorization code flow* is used.
 
 ### Env variables for OAuth OIDC flow:
 - `AUTH_ENABLED` optional and disabled by default. To enable the previous auth flow set it to `true`
-- `UI_OIDC_LOGIN_REDIRECT_URL` - URL to redirect user to provide creds and grand permissions (Keycloack)
+- `UI_OIDC_LOGIN_REDIRECT_URL` - URL to redirect user to provide creds and grand permissions (Keycloak)
 - `OIDC_TOKEN_PROVIDER_URL` - URL to exchange _authorization code_ for _access token_ (providing also client ID and secret)
-- `MCM_CLIENT_ID` - MCM portal client id (in Keycloak)
-- `MCM_CLIENT_SECRET` - MCM portal client secret (in Keycloak)
+- `OIDC_CLIENT_ID` - MCM portal client id (in Keycloak)
+- `OIDC_CLIENT_SECRET` - MCM portal client secret (in Keycloak)
 
 ### Cookie name:
 - `MCM_COOKIE_NAME` - if this env variable is not set, cookie name by default is _'MCM_SESSION'_
