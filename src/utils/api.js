@@ -1,11 +1,13 @@
 import { buildFetchActions } from '@modusbox/modusbox-ui-components/dist/redux-fetch';
+import { AUTH_ERROR_CODES, AFTER_LOGIN_ROUTE_KEY } from '../constants';
 
 const handleError = (error, status, state) => {
-  if (status === 401) {
+  if (AUTH_ERROR_CODES.includes(status)) {
+    sessionStorage.setItem(AFTER_LOGIN_ROUTE_KEY, window.location.pathname);
     window.location.assign(state.app.config.loginUrl);
     // should exit the execution of the function
     // otherwise the non-authenticated response will be
-    // treater as a regular response error, causing the UI
+    // treated as a regular response error, causing the UI
     // to display wrong error messages
     return;
   }
@@ -18,12 +20,7 @@ const services = {
     getApplicationHeaders: () => {
       return undefined;
     },
-    credentials: state => {
-      if (state.auth.login.isDisabled) {
-        return undefined;
-      }
-      return 'include';
-    },
+    credentials: 'include',
     sendAsJson: true,
     parseAsJson: true,
     handleError: handleError,

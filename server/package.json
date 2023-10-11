@@ -1,6 +1,6 @@
 {
   "name": "connection_manager_server",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Connection Manager web app server",
   "main": "index.js",
   "scripts": {
@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/modusintegration/tsp#readme",
   "dependencies": {
+    "axios": "^0.27.2",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "otplib": "^11.0.1",

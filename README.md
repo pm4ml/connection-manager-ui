@@ -140,7 +140,7 @@ Once a new version the UI is ready to deploy simply tag the commit with a string
 
 ## Authentication
 
-Authentication is enabled by default in a production build and it cannot be disabled.
+Authentication is disabled by default.
 
 In dev mode it can be selectively enabled or disabled depending on the preference.
 Simply open the browser console and run the commands
@@ -150,3 +150,18 @@ Simply open the browser console and run the commands
 
 :warning: **NOTE**
 It is suggested to clear local storage and cookies after enabling and disabling authentication. It will help starting a fresh session.
+
+
+## New login approach
+Based on new requirements (see story _IPROD-189_) we need to use Keycloak to authenticate users.
+For this purposes *OAuth 2.0 authorization code flow* is used. 
+
+### Env variables for OAuth OIDC flow:
+- `AUTH_ENABLED` optional and disabled by default. To enable the previous auth flow set it to `true`
+- `UI_OIDC_LOGIN_REDIRECT_URL` - URL to redirect user to provide creds and grand permissions (i.e. as provided by OIDC Provider, e.g. Keycloak)
+- `OIDC_TOKEN_PROVIDER_URL` - URL to exchange _authorization code_ for _access token_ (providing also client ID and secret)
+- `OIDC_CLIENT_ID` - MCM portal client id (i.e. as provided by OIDC Provider, e.g. Keycloak)
+- `OIDC_CLIENT_SECRET` - MCM portal client secret (i.e. as provided by OIDC Provider, e.g. Keycloak)
+
+### Cookie name:
+- `MCM_COOKIE_NAME` - if this env variable is not set, cookie name by default is _'MCM_SESSION'_

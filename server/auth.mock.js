@@ -1,5 +1,4 @@
 const express = require('express');
-const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const otplib = require('otplib');
@@ -19,7 +18,7 @@ const RESPONSES = {
       "2faEnabled": true
     }
   },
-  'totp_enabled': { 
+  'totp_enabled': {
     status: 200,
     data: {
       "enrolled": true,
@@ -43,6 +42,7 @@ const RESPONSES = {
 };
 
 const app = express();
+let response;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -52,7 +52,7 @@ app.post('/login', function (req, res) {
 
   const { username, password } = req.body;
   const isValid = username === 'test' && password === 'pass';
-  
+
   if (isValid && !enabled2fa) {
     response = RESPONSES.auth_successful;
   } else if (isValid && enrolled) {

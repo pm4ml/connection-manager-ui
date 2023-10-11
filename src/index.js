@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter, push } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
+
 import { sleep } from 'utils/async';
 import { isDevelopment } from 'utils/env';
 import configureStore from 'utils/store';
@@ -12,9 +13,11 @@ import getConfig from 'utils/getConfig';
 import { setAppConfig, initApp } from 'App/actions';
 import { setAuthEnabled, setAuthDisabled } from 'Auth/actions';
 import App from 'App/index.js';
-import Auth from 'Auth/index.js';
+import OidcLogin from 'Auth/OidcLogin';
+import OidcCallback from 'Auth/OidcCallback';
 import PasswordChange from 'Auth/PasswordChange';
 import TOTP from 'Auth/TOTP';
+
 import 'icons/index';
 import 'assets/normalize.css';
 import 'index.css';
@@ -23,6 +26,8 @@ import 'index.css';
 const history = createBrowserHistory({
   basename: '/',
 });
+
+let envConfig = {};
 
 // Please note this is a local url, handled by the app ( see Route below ). It is not the /api/login endpoint
 const loginUrl = `${window.location.protocol}//${window.location.host}/login`;
@@ -33,7 +38,8 @@ const Root = ({ store }) => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route path="/login" exact component={Auth} />
+        <Route path="/login" exact component={() => OidcLogin(envConfig)}/>
+        <Route path="/login-callback" component={() => OidcCallback(envConfig)}/>
         <Route path="/login/2fa" component={TOTP} />
         <Route path="/login/passwordChange" component={PasswordChange} />
         <Route path="/" component={App} />
@@ -46,7 +52,9 @@ const Root = ({ store }) => (
 export default Root;
 
 const boot = async () => {
-  const { isAuthEnabled, apiBaseUrl } = await getConfig();
+  envConfig = await getConfig();
+
+  const { isAuthEnabled, apiBaseUrl } = envConfig;
   const apiUrl = `${apiBaseUrl}/api`;
 
   const store = configureStore(history, { isDevelopment, isAuthEnabled });
@@ -61,7 +69,7 @@ const boot = async () => {
       await sleep(200);
       return fetch(...args);
     };
-    // assing to global so that we can easily retrieve state
+    // assign to global so that we can easily retrieve state
     // and dispatch actions from the browser console
     global.dispatch = store.dispatch;
     global.getState = store.getState;

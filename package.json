@@ -1,6 +1,6 @@
 {
   "name": "connection-manager-ui",
-  "version": "1.6.17",
+  "version": "2.0.0",
   "private": true,
   "dependencies": {
     "@modusbox/modusbox-ui-components": "1.16.25",
@@ -8,6 +8,7 @@
     "connected-react-router": "^6.3.2",
     "fetch-mock": "^7.3.3",
     "history": "^4.9.0",
+    "js-cookie": "^2",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.25",
