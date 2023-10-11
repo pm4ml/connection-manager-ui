@@ -161,7 +161,7 @@ For this purposes *OAuth 2.0 authorization code flow* is used.
 - `UI_OIDC_LOGIN_REDIRECT_URL` - URL to redirect user to provide creds and grand permissions (i.e. as provided by OIDC Provider, e.g. Keycloak)
 - `OIDC_TOKEN_PROVIDER_URL` - URL to exchange _authorization code_ for _access token_ (providing also client ID and secret)
 - `OIDC_CLIENT_ID` - MCM portal client id (i.e. as provided by OIDC Provider, e.g. Keycloak)
-- `OIDC_CLIENT_SECRET` - MCM portal client secret (in Keycloak)
+- `OIDC_CLIENT_SECRET` - MCM portal client secret (i.e. as provided by OIDC Provider, e.g. Keycloak)
 
 ### Cookie name:
 - `MCM_COOKIE_NAME` - if this env variable is not set, cookie name by default is _'MCM_SESSION'_
