@@ -341,8 +341,8 @@ const PM4MLCredentials = ({
   return (
     <div className="pm4ml-credentials">
       <div className="pm4ml-credentials__header">
-        <h2>PM4ML Keycloak Credentials</h2>
-        <p>These credentials are used by PM4ML to authenticate with Keycloak for accessing MCM APIs.</p>
+        <h2>PM4ML API Credentials</h2>
+        <p>These credentials are used by PM4ML to authenticate for accessing MCM APIs.</p>
         <div className="pm4ml-credentials__warning">
           <MessageBox
             kind="warning"
@@ -370,7 +370,7 @@ const PM4MLCredentials = ({
               message="Regenerating credentials will invalidate the current credentials. Make sure to update PM4ML configuration with the new credentials."
               size="s"
             />
-            <p>Are you sure you want to regenerate the Keycloak credentials for {dfspName}?</p>
+            <p>Are you sure you want to regenerate the API credentials for {dfspName}?</p>
           </div>
         </Modal>
       )}
