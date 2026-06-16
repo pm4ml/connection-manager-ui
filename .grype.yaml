@@ -9,6 +9,9 @@ ignore:
   - vulnerability: GHSA-w5hq-g745-h8pq
     package:
       name: uuid
+  - vulnerability: GHSA-h67p-54hq-rp68
+    package:
+      name: js-yaml
   - vulnerability: GHSA-9wv6-86v2-598j
     package:
       name: path-to-regexp
