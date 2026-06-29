@@ -1,5 +1,11 @@
 ignore:
   # Vulnerabilities in dev dependencies only
+  - vulnerability: GHSA-mx8g-39q3-5c79
+    package:
+      name: webpack-dev-server
+  - vulnerability: GHSA-64mm-vxmg-q3vj
+    package:
+      name: http-proxy-middleware
   - vulnerability: GHSA-79cf-xcqc-c78w
     package:
       name: webpack-dev-server
